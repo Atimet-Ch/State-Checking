@@ -8,6 +8,10 @@ h1{
     font-size: 3rem;
 }
 
+input{
+  text-align: left;
+}
+
 @keyframes shake {
     0% { transform: translateX(0); }
     20% { transform: translateX(-10px); }
