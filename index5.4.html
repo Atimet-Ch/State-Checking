@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lottery Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input { width: 30px; text-align: center; }
+    .locked { background-color: #f8d7da; }
+  </style>
+</head>
+<body>
+  <h1>Lottery Generator</h1>
+  <p>Lock any digits you want and click 'Generate' to get a lottery number.</p>
+
+  <div id="lotteryInput">
+    <input type="text" maxlength="1" id="digit0">
+    <input type="text" maxlength="1" id="digit1">
+    <input type="text" maxlength="1" id="digit2">
+    <input type="text" maxlength="1" id="digit3">
+    <input type="text" maxlength="1" id="digit4">
+    <input type="text" maxlength="1" id="digit5">
+  </div>
+  <br>
+  <button onclick="generateLottery()">Generate</button>
+
+  <h2 id="generatedNumber"></h2>
+
+  <h3>Guess the Number:</h3>
+  <input type="text" id="userGuess" maxlength="6" placeholder="Enter 6-digit number">
+  <button onclick="checkGuess()">Check Guess</button>
+  <p id="resultMessage"></p>
+<script src="/5/5.4.js"></script>  
+</body>
+</html>
