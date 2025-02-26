@@ -1,7 +1,7 @@
 async function fetchData(url) {
     try {
       // รอผลลัพธ์จาก fetch()
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const response = await fetch('https://www.spu.ac.th/');
       // ตรวจสอบว่าผลลัพธ์คือสถานะที่ถูกต้อง
       if (!response.ok) {
         throw new Error("ไม่สามารถดึงข้อมูลได้");
@@ -17,5 +17,5 @@ async function fetchData(url) {
   }
   
   // ทดสอบฟังก์ชัน
-  fetchData('https://jsonplaceholder.typicode.com/posts');
+  fetchData('https://www.spu.ac.th/');
   

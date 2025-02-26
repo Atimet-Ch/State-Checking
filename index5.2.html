@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณเกรดและ GPA</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
 </head>
-<body>
-  <h1>Student Grade Calculator</h1>
-  <div id="subjects"></div>
-  <button onclick="calculateGPA()">Calculate GPA</button>
-  <h2 id="result"></h2>
-
-  <script src="/5/5.2.js"></script>
+<body onload="loadData()">
+    <h2>คำนวณเกรดและ GPA</h2>
+    <table id="gradeTable">
+        <tr>
+            <th>รายวิชา</th>
+            <th>หน่วยกิต</th>
+            <th>คะแนน</th>
+            <th>เกรด</th>
+            <th>ค่าน้ำหนักเกรด</th>
+        </tr>
+    </table>
+    <button onclick="addRow()">เพิ่มวิชา</button>
+    <button onclick="calculateGPA()">คำนวณ GPA</button>
+    <h3 id="result">GPA: -</h3>
 </body>
+<script src="/5/5.2.js"></script>
 </html>

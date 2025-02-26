@@ -22,7 +22,7 @@ def test_json_string_operations():
 
 # ทดสอบการอ่านไฟล์ JSON
 print("Reading data from file:")
-file_path = 'data.json'  # ระบุ path ของไฟล์ JSON ที่คุณต้องการอ่าน
+file_path = 'SetJSON_Data/data.json'  # ระบุ path ของไฟล์ JSON ที่คุณต้องการอ่าน
 data_from_file = read_json(file_path)
 print(data_from_file)
 
