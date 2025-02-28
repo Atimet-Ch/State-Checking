@@ -15,3 +15,7 @@ let floatNumber = parseFloat("3.14");
 console.log("String to Integer:", intNumber);
 console.log("String to Float:", floatNumber);
 console.log("Number to String:", String(500));
+
+console.log(typeof(name));
+console.log(typeof(age))
+console.log(typeof(isStudent))

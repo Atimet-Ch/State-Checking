@@ -11,6 +11,17 @@ function checkNumber() {
         if (userInput && userInput.toLowerCase() !== "exit") { // ตรวจสอบว่าไม่ได้กด cancel หรือปล่อยว่าง
             console.log(`You typed: ${userInput}`);
         }
+
+        if (!isNaN(userInput)) {
+            let number = parseInt(userInput); // แปลงเป็นตัวเลข
+            if (number % 2 === 0) {
+                console.log(`${number} is an even number.`);
+            } else {
+                console.log(`${number} is an odd number.`);
+            }
+        } else {
+            console.log("Please enter a valid number.");
+        }
     }
     console.log("Goodbye!");
 }

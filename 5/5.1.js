@@ -1,4 +1,3 @@
-
 function addTask() {
   const taskTitle = document.getElementById("taskTitle").value;
   const taskDetails = document.getElementById("taskDetails").value;
@@ -13,6 +12,13 @@ function addTask() {
     const detailsCell = document.createElement("td");
     detailsCell.textContent = taskDetails;
 
+    // Create Attendance checkbox cell
+    const attendanceCell = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "attendance-checkbox";
+    attendanceCell.appendChild(checkbox);
+
     const actionCell = document.createElement("td");
 
     const deleteButton = document.createElement("button");
@@ -26,6 +32,7 @@ function addTask() {
 
     row.appendChild(titleCell);
     row.appendChild(detailsCell);
+    row.appendChild(attendanceCell);  // Add attendance cell
     row.appendChild(actionCell);
 
     tableBody.appendChild(row);
