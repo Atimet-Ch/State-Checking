@@ -1,20 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do List</title>
   <style>
-    body { font-family: Arial, sans-serif; }
-    ul { list-style-type: none; padding: 0; }
-    li { padding: 5px 0; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    .todo-form {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .todo-form input,
+    .todo-form textarea {
+      padding: 8px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .todo-form input {
+      width: 200px;
+    }
+
+    .todo-form textarea {
+      width: 400px;
+      height: 50px;
+    }
+
+    .todo-form button {
+      padding: 8px 15px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .todo-form button:hover {
+      background-color: #45a049;
+    }
+
+    .delete-button {
+      padding: 5px 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: darkred;
+    }
   </style>
 </head>
+
 <body>
+
   <h1>To-Do List</h1>
-  <input type="text" id="taskInput" placeholder="Enter new task">
-  <button onclick="addTask()">Add</button>
-  <ul id="taskList"></ul>
+
+  <div class="todo-form">
+    <input type="text" id="taskTitle" placeholder="Enter Student ID">
+    <textarea id="taskDetails" placeholder="Enter Name & Surname"></textarea>
+    <button onclick="addTask()">Add</button>
+  </div>
+
+  <table id="taskTable">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name - Surname</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Task rows will appear here -->
+    </tbody>
+  </table>
 </body>
-<script src="/5/5.1.js"></script>
+<script src="/5/5.1.js?v=1.0"></script>
 </html>

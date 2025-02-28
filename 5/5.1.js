@@ -1,31 +1,39 @@
+
 function addTask() {
-    const taskInput = document.getElementById("taskInput");
-    const taskList = document.getElementById("taskList");
-    const task = taskInput.value;
+  const taskTitle = document.getElementById("taskTitle").value;
+  const taskDetails = document.getElementById("taskDetails").value;
+  const tableBody = document.querySelector("#taskTable tbody");
 
-    if (task) {
-      const li = document.createElement("li");
-      li.textContent = task;
-      li.onclick = function() { this.remove(); };
-      taskList.appendChild(li);
-      taskInput.value = "";
-      saveTasks();
-    }
+  if (taskTitle && taskDetails) {
+    const row = document.createElement("tr");
+
+    const titleCell = document.createElement("td");
+    titleCell.textContent = taskTitle;
+
+    const detailsCell = document.createElement("td");
+    detailsCell.textContent = taskDetails;
+
+    const actionCell = document.createElement("td");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "delete-button";
+    deleteButton.onclick = function() {
+      row.remove();
+    };
+
+    actionCell.appendChild(deleteButton);
+
+    row.appendChild(titleCell);
+    row.appendChild(detailsCell);
+    row.appendChild(actionCell);
+
+    tableBody.appendChild(row);
+
+    // Clear input fields
+    document.getElementById("taskTitle").value = "";
+    document.getElementById("taskDetails").value = "";
+  } else {
+    alert("Please enter both task Student ID and Name - Surname!");
   }
-
-  function saveTasks() {
-    const tasks = Array.from(document.querySelectorAll("#taskList li")).map(li => li.textContent);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
-
-  function loadTasks() {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.forEach(task => {
-      const li = document.createElement("li");
-      li.textContent = task;
-      li.onclick = function() { this.remove(); saveTasks(); };
-      document.getElementById("taskList").appendChild(li);
-    });
-  }
-
-  window.onload = loadTasks;
+}
