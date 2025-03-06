@@ -1,0 +1,108 @@
+-------------------- body.jsx--------------------
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { FaTimesCircle } from "react-icons/fa";  // ใช้ FaTimesCircle แทน XCircle
+
+const Body = ({ files }) => {
+  const deleteClick = (fileName) => {
+    if (window.confirm(`Are you sure you want to delete ${fileName}?`)) {
+      axios
+        .post("http://localhost:3000/downloadR/delete", { name: fileName })
+        .then((res) => {
+          console.log("File deleted successfully");
+          fetchFiles();
+        })
+        .catch((err) => {
+          console.error("File deletion failed:", err.response?.data?.message || err.message);
+        });
+    }
+  };
+
+  const fetchFiles = () => {
+    axios
+      .get("http://localhost:3000/downloadR/files")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch files:", err);
+      });
+  };
+
+  return (
+    <div>
+      <h2>Data Table</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Preview</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {files.map((fileObj, index) => (
+            <tr key={index}>
+              <td>
+                <img src={fileObj.preview} alt="preview" className="preview-image" />
+              </td>
+              <td>{fileObj.file ? fileObj.file.name : 'No file name'}</td>
+              <td>{fileObj.file ? fileObj.file.type : 'N/A'}</td>
+              <td>{fileObj.file ? (fileObj.file.size / 1024).toFixed(2) + ' KB' : 'N/A'}</td>
+              <td>
+                <button onClick={() => deleteClick(fileObj.file ? fileObj.file.name : '')}>
+                  <FaTimesCircle size={20} />  {/* ใช้ FaTimesCircle แทน XCircle */}
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Body;
+
+
+
+-------------------- App.jsx--------------------
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+
+import Body from "./components/body/body.jsx";
+import Header from "./Components/Header/Header.jsx";
+
+import './App.css'
+
+function App() {
+  const [files, setFiles] = useState([]);
+
+  const fetchFiles = () => {
+    axios
+      .get("http://localhost:3000/downloadR/list")
+      .then((response) => {
+        setFiles(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching files:", error);
+      });
+  };
+  
+  useEffect(() => {
+    fetchFiles();
+  }, []);
+
+
+  return (
+    <div className="container">
+      <Header setFiles = {setFiles} />
+      <Body files = {files} />
+    </div>
+  );
+}
+
+export default App;
